@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.set('trust proxy', 1);   // Render pone un proxy delante
 
 const allowedOrigins = String(process.env.CORS_ORIGINS || process.env.FRONTEND_URL || '')
   .split(',').map((origin) => origin.trim()).filter(Boolean);
