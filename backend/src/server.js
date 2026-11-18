@@ -42,7 +42,7 @@ app.use('/api/v1', require('./Routers/mobile'));
 
 app.use('/api', (req, res) => res.status(404).json({ ok: false, code: 'NOT_FOUND' }));
 app.use((err, req, res, next) => {
-  console.error('Error no manejado:', err.message);
-  res.status(500).json({ ok: false, code: 'SERVER_ERROR' });
+  console.error('Error no manejado COMPLETO:', err); // Cambiar a err para ver toda la traza
+  res.status(500).json({ ok: false, code: 'SERVER_ERROR', error: err.message });
 });
 app.listen(PORT, () => { console.log(`Servidor Rampify en http://localhost:${PORT}`); require('./Services/mantenimiento').iniciar(); });
